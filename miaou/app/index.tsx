@@ -46,7 +46,7 @@ export default function HomeScreen() {
       if (uri) {
         const audioFile = await File.readAsStringAsync(uri, { encoding: File.EncodingType.Base64 });
 
-        const response = await axios.post(`${process.env.API_URL}/ios-upload`, {
+        const response = await axios.post(`${process.env.EXPO_PUBLIC_API_URL}/ios-upload`, {
           audio: audioFile,
           filename: 'recording.m4a',
           mimetype: 'audio/m4a'
