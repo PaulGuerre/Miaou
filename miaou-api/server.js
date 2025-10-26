@@ -92,8 +92,8 @@ app.post('/generate-response', upload.single('audio'), async (req, res) => {
         'Content-Disposition': `attachment; filename="response.mp3"`,
       }
     }, (err) => {
-      if (fs.existsSync(mp3FilePath)) {
-        fs.unlinkSync(mp3FilePath);
+      if (fs.existsSync(audioBuffer)) {
+        fs.unlinkSync(audioBuffer);
       }
       if (err) {
         console.error('Error sending file:', err);
