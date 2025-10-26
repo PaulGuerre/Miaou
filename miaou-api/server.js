@@ -27,11 +27,12 @@ const convertToWav = (inputBuffer) => {
 
     fs.writeFileSync(inputPath, inputBuffer);
 
-    ffmpeg(inputPath)
+    const command = ffmpeg(inputPath)
       .toFormat('wav')
       .audioFrequency(16000)
       .audioChannels(1)
       .audioBitrate('16k')
+      .outputOptions(['-preset', 'ultrafast'])
       .on('error', (err) => {
         console.error('Error converting audio:', err);
         if (fs.existsSync(inputPath)) fs.unlinkSync(inputPath);
@@ -43,8 +44,9 @@ const convertToWav = (inputBuffer) => {
         fs.unlinkSync(inputPath);
         fs.unlinkSync(outputPath);
         resolve(wavBuffer);
-      })
-      .save(outputPath);
+      });
+
+    command.save(outputPath);
   });
 };
 
