@@ -1,12 +1,15 @@
 import express from 'express';
 import multer from 'multer';
 import ffmpeg from 'fluent-ffmpeg';
+import ffmpegStatic from 'ffmpeg-static';
 import fs from 'fs';
 import { tmpdir } from 'os';
 import { join } from 'path';
 import cors from 'cors';
 import { getTextFromFile, synthesizeSpeech } from './azure.js';
 import { getMistralResponse } from './mistral.js';
+
+ffmpeg.setFfmpegPath(ffmpegStatic);
 
 const upload = multer({ storage: multer.memoryStorage(), limits: { fileSize: 50 * 1024 * 1024 } });
 
