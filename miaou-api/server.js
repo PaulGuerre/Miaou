@@ -57,7 +57,6 @@ const generateResponse = (buffer) => {
       const wavBuffer = await convertToWav(buffer);
       console.log('WAV conversion complete.');
 
-
       console.log('Starting transcription...');
       const transcription = await getTextFromFile(wavBuffer);
       console.log('Transcription acquired :', transcription);
@@ -65,12 +64,13 @@ const generateResponse = (buffer) => {
       console.log('Starting Mistral response generation...');
       const mistralResponse = await getMistralResponse(transcription);
 
-      console.log('Mistral Response generated :', mistralResponse);
+      const cleanedResponse = mistralResponse.replace(/[*_~`#>\+=\|{}\[\]\(\)\\]/g, '');
+      console.log('Mistral Response generated :', cleanedResponse);
 
       console.log('Starting speech synthesis...');
-      const mp3FilePath = await synthesizeSpeech(mistralResponse);
+      const audioBuffer = await synthesizeSpeech(cleanedResponse);
 
-      resolve(mp3FilePath);
+      resolve(audioBuffer);
     } catch (error) {
       reject(error);
     }
