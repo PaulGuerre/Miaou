@@ -4,6 +4,8 @@ Miaou is a mobile application developed using Expo.dev with the objective of pro
 
 ## POC 
 
+https://github.com/user-attachments/assets/a72416f3-a282-4ec0-87c6-43ff035d103f
+
 <img width="414" height="896" alt="IMG_7501" src="https://github.com/user-attachments/assets/a77bf1b5-0e64-47c7-96b5-64775ccf6e07" />
 
 <img width="414" height="896" alt="IMG_7502" src="https://github.com/user-attachments/assets/ff4963db-ec11-46ee-bcd2-4d0b011ee4bf" />
